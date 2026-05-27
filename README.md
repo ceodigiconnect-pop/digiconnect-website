@@ -1,36 +1,164 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DigiConnect Co., Ltd. — Official Website
 
-## Getting Started
+เว็บไซต์บริษัท DigiConnect Co., Ltd. สร้างด้วย **Next.js 14 (App Router)** + **Tailwind CSS**
 
-First, run the development server:
+โดย Chatchawan Kaewmanee (โค้ชป๊อป) — Founder & CEO
+
+---
+
+## Tech Stack
+
+| Layer | Tech |
+|-------|------|
+| Framework | Next.js 14 (App Router, Static Export) |
+| Styling | Tailwind CSS |
+| Font | Inter + Noto Sans Thai (via `next/font/google`) |
+| Icons | lucide-react |
+| Language | TypeScript |
+| Deploy | Vercel |
+
+---
+
+## Pages
+
+| Route | Description |
+|-------|-------------|
+| `/` | Home — Hero, Social Proof, Services Preview, CTA |
+| `/services` | บริการ 3 กลุ่มพร้อม full detail |
+| `/about` | Bio โค้ชป๊อป, Expertise Tags, Mission |
+| `/contact` | Contact Form + ช่องทางติดต่อ |
+
+---
+
+## Local Development
+
+### Requirements
+
+- Node.js 18.17+ หรือ 20+
+- npm 9+
+
+### Setup
 
 ```bash
+# 1. Clone repo
+git clone https://github.com/<your-username>/digiconnect-website.git
+cd digiconnect-website
+
+# 2. Install dependencies
+npm install
+
+# 3. Start dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+เปิด [http://localhost:3000](http://localhost:3000) ในเบราว์เซอร์
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev      # dev server (http://localhost:3000)
+npm run build    # production build
+npm run start    # start production server
+npm run lint     # run ESLint
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy to Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### วิธีที่ 1 — Vercel CLI (แนะนำ)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# ติดตั้ง Vercel CLI
+npm install -g vercel
 
-## Deploy on Vercel
+# Login
+vercel login
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Deploy (ครั้งแรก)
+vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Deploy to production
+vercel --prod
+```
+
+### วิธีที่ 2 — GitHub + Vercel Dashboard
+
+1. **Push โค้ดขึ้น GitHub**
+   ```bash
+   # สร้าง repo บน GitHub ก่อน แล้วรัน:
+   git remote add origin https://github.com/<username>/digiconnect-website.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+2. **Connect กับ Vercel**
+   - ไปที่ [vercel.com/new](https://vercel.com/new)
+   - เลือก "Import Git Repository"
+   - เลือก repo `digiconnect-website`
+   - กด **Deploy**
+
+3. **Settings ที่ Vercel จะ detect อัตโนมัติ:**
+   - Framework: Next.js
+   - Build Command: `npm run build`
+   - Output Directory: `.next`
+   - Install Command: `npm install`
+   - Node.js Version: 20.x (แนะนำ)
+
+4. **Custom Domain** (optional)
+   - ไปที่ Settings → Domains
+   - เพิ่ม domain เช่น `digiconnect.co.th`
+
+---
+
+## Environment Variables
+
+ไม่มี environment variables ที่จำเป็นสำหรับ static site นี้
+
+หากต้องการเพิ่มในอนาคต (เช่น contact form backend):
+
+```bash
+# .env.local (ไม่ commit ขึ้น Git)
+NEXT_PUBLIC_SITE_URL=https://digiconnect.co.th
+```
+
+---
+
+## Project Structure
+
+```
+digiconnect-website/
+├── app/
+│   ├── layout.tsx          # Root layout (Navbar + Footer + fonts)
+│   ├── globals.css         # Tailwind base + utilities
+│   ├── page.tsx            # / Home
+│   ├── services/
+│   │   └── page.tsx        # /services
+│   ├── about/
+│   │   └── page.tsx        # /about
+│   └── contact/
+│       └── page.tsx        # /contact
+├── components/
+│   ├── Navbar.tsx          # Sticky navbar + mobile menu
+│   ├── Footer.tsx          # Footer + social links
+│   └── ContactForm.tsx     # Client-side contact form
+├── tailwind.config.ts
+├── next.config.mjs
+└── tsconfig.json
+```
+
+---
+
+## Brand
+
+- **Primary:** `#0F2A5E` (Navy)
+- **Accent:** `#2563EB` (Blue)
+- **Font:** Inter (Latin) + Noto Sans Thai
+
+---
+
+## Contact
+
+- LINE OA: @digiconnect
+- Email: sangrat@digiconnect.co.th
+- Facebook: DigiConnect - Digital Marketing Agency
