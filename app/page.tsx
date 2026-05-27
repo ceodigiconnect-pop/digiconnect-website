@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BarChart2, Bot, GraduationCap } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "DigiConnect Co., Ltd. | ที่ปรึกษา Digital Marketing & AI Strategy",
+  description:
+    "โค้ชป๊อป Chatchawan Kaewmanee — ที่ปรึกษาด้าน Performance Marketing, AI Visibility และ MarTech ประสบการณ์กว่า 13 ปี ดูแลลูกค้ากว่า 200 องค์กร ทั้ง B2B และ B2C",
+  openGraph: {
+    title: "DigiConnect Co., Ltd. | Digital Marketing & AI Strategy",
+    description:
+      "Performance Marketing, AI Visibility และ Training & Consulting ที่วัดผลได้จริง",
+    type: "website",
+    locale: "th_TH",
+  },
+};
 
 const stats = [
   {
